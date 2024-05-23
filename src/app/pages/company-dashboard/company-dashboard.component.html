@@ -1,0 +1,56 @@
+<!-- <p class="w-12 h-screen bg-blue-400">company-dashboard works!</p> -->
+<!-- <h1 class="text-center">{{ company.name }}</h1> -->
+<div class="company-dashboard flex flex-column h-screen bg-gray-100">
+  <div class="header flex justify-content-center p-3">
+    <button
+      pButton
+      label="Add Trainee"
+      class="w-10rem h-3rem"
+      routerLink="/add-trainee"
+    ></button>
+  </div>
+  <div *ngFor="let company of companyById">
+    <h1 class="text-center font-bold text-gray-800">
+      {{ company.companyName }}
+    </h1>
+    <hr />
+    <div
+      class="w-12 h-full flex align-items-center justify-content-around flex-wrap gap-4 p-2"
+    >
+      <!-- <div class="col"> -->
+      <!-- </div> -->
+      <div *ngFor="let trainee of company.traineecourses">
+        <div class="w-18rem h-23rem shadow-2 p-3 border-round-lg col">
+          <h1 class="text-center">{{ trainee?.traineeTitle }}</h1>
+          <h3>Description:</h3>
+          <p class="w-12 h-8rem">{{ trainee?.traineeDescription }}</p>
+          <hr />
+          <h3>Exceptions From Student:</h3>
+          <p class="w-12 h-3rem">{{ trainee?.expectationsFromStudents }}</p>
+          <hr />
+          <p class="text-center">Start - End</p>
+          <p class="text-center">
+            {{ trainee?.startDate }} - {{ trainee?.endDate }}
+          </p>
+          <p>Max Students: {{ trainee.maxUsers }}</p>
+          <div
+            class="w-12 h-3rem flex align-items-center justify-content-center"
+          >
+            <button
+              pButton
+              label="Show application"
+              class="w-6 h-2rem"
+              (click)="onShowApplication(trainee.traineeCourseId)"
+            ></button>
+            <div class="hidden">
+              <!-- <app-application-id
+                *ngIf="selectedTraineeCourseId === trainee.traineeCourseId"
+                [traineeCourseId]="selectedTraineeCourseId"
+              ></app-application-id> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

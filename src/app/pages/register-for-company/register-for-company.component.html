@@ -1,0 +1,99 @@
+<form [formGroup]="registerForm" (ngSubmit)="addCompany()">
+  <div class="container w-12 flex align-items-center flex-column gap-4">
+    <h1>Register a new account!</h1>
+    <input type="hidden" formControlName="companyId" />
+    <div>
+      <input
+        class="h-3rem mx-2 w-24rem"
+        pInputText
+        type="text"
+        formControlName="companyName"
+        placeholder="Name of Company"
+        [ngClass]="{
+          'ng-invalid ng-dirty':
+            !registerForm.controls['companyName'].valid &&
+            registerForm.controls['companyName'].dirty
+        }"
+      />
+      <!-- @if (!registerForm.controls['companyName'].valid &&
+      registerForm.controls['companyName'].dirty ) {
+      <span class="p-error absolute block text-xs">
+        @if(registerForm?.controls?.['companyName']?.errors?.['required']){
+        <span>Email is required!</span>
+        } @if (registerForm?.controls?.['companyName']?.errors?.['pattern']) {
+        <span> Write email currectly! </span>
+        }
+      </span>
+      } -->
+    </div>
+
+    <input
+      class="h-3rem mx-2 w-24rem"
+      pInputText
+      type="text"
+      formControlName="companyLogo"
+      placeholder="Logo of Company"
+    />
+    <input
+      class="h-3rem mx-2 w-24rem"
+      pInputText
+      type="text"
+      formControlName="aboutCompany"
+      placeholder="About Company"
+    />
+    <input
+      class="h-3rem mx-2 w-24rem"
+      pInputText
+      type="text"
+      formControlName="industry"
+      placeholder="Industry"
+    />
+    <input
+      class="h-3rem mx-2 w-24rem"
+      pInputText
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+      [ngClass]="{
+        'ng-invalid ng-dirty':
+          !registerForm.controls['password'].valid &&
+          registerForm.controls['password'].dirty
+      }"
+    />
+    <!-- @if (!registerForm.controls['password'].valid &&
+    registerForm.controls['password'].dirty ) {
+
+    <span class="p-error block absolute text-xs">
+      @if(registerForm?.controls?.['password']?.errors?.['required']){
+      <span>Password is required!</span>
+      } @if (registerForm?.controls?.['password']?.errors?.['pattern']) {
+      <span>
+        the password must be 6 letter's at least with capital letter and number
+      </span>
+      }
+    </span>
+    } -->
+    <input
+      class="h-3rem mx-2 w-24rem"
+      pInputText
+      type="string"
+      formControlName="description"
+      placeholder="Description"
+    />
+    <input
+      class="h-3rem mx-2 w-24rem"
+      pInputText
+      type="string"
+      formControlName="location"
+      placeholder="Location"
+    />
+    <input
+      class="h-3rem mx-2 w-24rem"
+      pInputText
+      type="text"
+      formControlName="contactInformation"
+      placeholder="ContactInformation"
+    />
+    <button pButton label="Register" type="submit" class="w-2 h-2rem"></button>
+  </div>
+</form>

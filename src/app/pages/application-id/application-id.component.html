@@ -1,0 +1,50 @@
+<p-toast></p-toast>
+
+<div
+  class="border-1 w-12 h-full flex align-items-center justify-content-center flex-column p-3 row-gap-4"
+>
+  <ng-container *ngIf="trainees?.length">
+    <ng-container *ngFor="let trainee of trainees; let i = index">
+      <p-card [style]="{ width: '500px' }">
+        <h1>{{ trainee?.firstName }} {{ trainee?.lastName }}</h1>
+        <h3>LinkedIn profile: {{ trainee?.linkedInProfile }}</h3>
+        <p>GitHub profile: {{ trainee?.gitHubProfile }}</p>
+        <h4>Profile: {{ trainee?.portfolio }}</h4>
+        <h3>Skills: {{ trainee?.skills }}</h3>
+        <div *ngIf="trainee?.applications?.length">
+          <ng-container
+            *ngFor="let application of trainee.applications; let j = index"
+          >
+            <p>Application ID: {{ application?.applicationId }}</p>
+            <p>Status: {{ application?.status }}</p>
+            <div
+              class="flex w-12 h-6rem justify-content-around align-items-center"
+            >
+              <button
+                pButton
+                label="Accept Application"
+                class="w-4 h-2rem"
+                [disabled]="isButtonDisabled(application, trainee)"
+                severity="success"
+                (click)="acceptStudent(application, trainee.userId)"
+              ></button>
+              <button
+                pButton
+                label="Reject Application"
+                class="w-4 h-2rem p-button-danger"
+                [disabled]="isButtonDisabled(application, trainee)"
+                (click)="rejectStudent(application, trainee.userId)"
+              ></button>
+            </div>
+          </ng-container>
+        </div>
+      </p-card>
+    </ng-container>
+  </ng-container>
+  <div
+    *ngIf="!trainees?.length"
+    class="flex w-full h-23rem h-screen justify-content-center align-items-center"
+  >
+    <h1>There are no students applying for this trainee</h1>
+  </div>
+</div>

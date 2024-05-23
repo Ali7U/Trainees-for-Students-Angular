@@ -1,0 +1,60 @@
+<form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+  <div
+    class="container w-12 h-screen flex align-items-center justify-content-center"
+  >
+    <div class="form w-4 h-30rem flex flex-column align-items-center gap-6">
+      <h1 class="">Login</h1>
+      <p-floatLabel class="w-6">
+        <input
+          type="text"
+          class="h-3rem w-12"
+          pInputText
+          id="companyName"
+          formControlName="companyName"
+        />
+        <label for="companyName">Name of Company</label>
+        @if (!companyForm.controls['companyName'].valid &&
+        companyForm.controls['companyName'].dirty ) {
+
+        <span class="p-error block relative text-xs">
+          @if(companyForm.get('companyName')?.errors?.['required']){
+          <span class="absolute">The name of company is required!</span>
+          }
+        </span>
+        }
+      </p-floatLabel>
+
+      <p-floatLabel class="w-6">
+        <input
+          type="password"
+          class="h-3rem w-12"
+          pInputText
+          id="password"
+          formControlName="password"
+        />
+
+        <label for="password">Password</label>
+        @if (companyForm.get('password')?.errors &&
+        (companyForm.get('password')?.dirty ||
+        companyForm.get('password')?.touched)) {
+
+        <span class="p-error block absolute text-xs">
+          @if(companyForm.get('password')?.errors?.['required']){
+          <span>Password is required!</span>
+          } @if (companyForm.get('password')?.errors?.['pattern']) {
+          <span>
+            the password must be 6 letter's at least with capital letter and
+            number
+          </span>
+          }
+        </span>
+        }
+      </p-floatLabel>
+      <button pButton type="submit" label="Login" class="w-4 h-2rem"></button>
+      <a routerLink="/register-for-company" class="no-underline">
+        <label>Don't have account ? click here</label>
+      </a>
+      <span>{{ errorMsg }}</span>
+    </div>
+  </div>
+</form>

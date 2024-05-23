@@ -1,0 +1,162 @@
+<form [formGroup]="registerForm" (ngSubmit)="addUser()">
+  <div class="container w-12 flex align-items-center flex-column px-8">
+    <h1>Register a new account!</h1>
+    <input type="hidden" formControlName="userId" />
+    <div class="col">
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="firstName"
+        placeholder="First Name"
+      />
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="lastName"
+        placeholder="Last Name"
+      />
+    </div>
+    <div class="col">
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="date"
+        formControlName="dateOfBirth"
+        placeholder="Date Of Breath"
+      />
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="emailAddress"
+        placeholder="Email"
+        [ngClass]="{
+          'ng-invalid ng-dirty':
+            !registerForm.controls['emailAddress'].valid &&
+            registerForm.controls['emailAddress'].dirty
+        }"
+      />
+      @if (!registerForm.controls['emailAddress'].valid &&
+      registerForm.controls['emailAddress'].dirty ) {
+
+      <span class="p-error block relative text-xs">
+        @if(registerForm?.controls['emailAddress'].errors['required']){
+        <span class="absolute email">Email is required!</span>
+        } @if (registerForm.controls['emailAddress'].errors['pattern']) {
+        <span class="absolute emailp"> Write email currectly! </span>
+        }
+      </span>
+      }
+    </div>
+    <div class="col">
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="password"
+        placeholder="Password"
+        [ngClass]="{
+          'ng-invalid ng-dirty':
+            !registerForm.controls['password'].valid &&
+            registerForm.controls['password'].dirty
+        }"
+      />
+      @if (!registerForm.controls['password'].valid &&
+      registerForm.controls['password'].dirty ) {
+
+      <span class="p-error block absolute text-xs">
+        @if(registerForm?.controls['password'].errors['required']){
+        <span>Password is required!</span>
+        } @if (registerForm.controls['password'].errors['pattern']) {
+        <span>
+          the password must be 6 letter's at least with capital letter and
+          number
+        </span>
+        }
+      </span>
+      }
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="string"
+        formControlName="phoneNumber"
+        placeholder="Phone Number"
+      />
+    </div>
+    <div class="col">
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="number"
+        formControlName="gpa"
+        placeholder="GPA"
+      />
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="major"
+        placeholder="Major"
+      />
+    </div>
+    <div class="col">
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="skills"
+        placeholder="Skills"
+      />
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="gender"
+        placeholder="Gender"
+      />
+    </div>
+    <div class="col">
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="resumeCv"
+        placeholder="Resume/CV"
+      />
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="portfolio"
+        placeholder="Portfolio"
+      />
+    </div>
+    <div class="col">
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="linkedInProfile"
+        placeholder="LinkedIn Profile"
+      />
+      <input
+        class="h-3rem mx-2 w-12rem"
+        pInputText
+        type="text"
+        formControlName="gitHubProfile"
+        placeholder="GitHub Profile"
+      />
+    </div>
+
+    <input type="hidden" formControlName="role" />
+    <button
+      class="w-2 h-2rem text-center"
+      pButton
+      type="submit"
+      [disabled]="!registerForm.valid"
+      label="Register!"
+    ></button>
+  </div>
+</form>

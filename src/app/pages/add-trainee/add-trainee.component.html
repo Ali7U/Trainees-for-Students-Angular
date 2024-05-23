@@ -1,0 +1,98 @@
+<form [formGroup]="traineeForm" (ngSubmit)="onSubmit()">
+  <div
+    class="w-12 h-screen flex flex-column align-items-center justify-content-around"
+  >
+    <div>
+      <input type="hidden" formControlName="companyId" />
+    </div>
+    <div>
+      <input type="hidden" formControlName="traineeCourseId" />
+    </div>
+    <div>
+      <p-floatLabel class="w-12">
+        <input
+          pInputText
+          class="h-3rem w-18rem"
+          type="text"
+          id="traineeTitle"
+          formControlName="traineeTitle"
+        />
+        <label for="traineeTitle">Trainee Title:</label>
+      </p-floatLabel>
+    </div>
+    <div>
+      <p-floatLabel class="w-12">
+        <input
+          pInputText
+          class="h-3rem w-18rem"
+          type="text"
+          id="traineeDescription"
+          formControlName="traineeDescription"
+        />
+        <label for="traineeDescription">Trainee Description:</label>
+      </p-floatLabel>
+    </div>
+    <div>
+      <p-floatLabel class="w-12">
+        <input
+          pInputText
+          class="h-3rem w-18rem"
+          type="text"
+          id="expectationsFromStudents"
+          formControlName="expectationsFromStudents"
+        />
+        <label for="expectationsFromStudents"
+          >Expectations From Students:</label
+        >
+      </p-floatLabel>
+    </div>
+    <div>
+      <p-floatLabel class="w-12">
+        <input
+          pInputText
+          class="h-3rem w-18rem"
+          type="number"
+          id="gparequirement"
+          formControlName="gparequirement"
+        />
+        <label for="gparequirement">GPA Requirement:</label>
+      </p-floatLabel>
+    </div>
+    <div>
+      <p-floatLabel class="w-12">
+        <input
+          pInputText
+          class="h-3rem w-18rem"
+          type="date"
+          id="startDate"
+          formControlName="startDate"
+        />
+      </p-floatLabel>
+    </div>
+    <div>
+      <p-floatLabel class="w-12">
+        <input
+          pInputText
+          class="h-3rem w-18rem"
+          type="date"
+          formControlName="endDate"
+        />
+      </p-floatLabel>
+    </div>
+    <div>
+      <p-floatLabel class="w-12">
+        <input
+          pInputText
+          class="h-3rem w-18rem"
+          type="number"
+          id="maxUsers"
+          formControlName="maxUsers"
+        />
+        <label for="maxUsers">Max Users:</label>
+      </p-floatLabel>
+    </div>
+    <button pButton type="submit" [disabled]="traineeForm.invalid">
+      Submit
+    </button>
+  </div>
+</form>

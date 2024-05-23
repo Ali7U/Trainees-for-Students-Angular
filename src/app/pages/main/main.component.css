@@ -1,0 +1,4 @@
+.ui-toast-message {
+    max-height: 1000px; /* Set the maximum height */
+    overflow-y: auto; /* Enable vertical scroll if content exceeds the height */
+  }

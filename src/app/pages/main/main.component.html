@@ -1,0 +1,52 @@
+<div class="company-dashboard flex flex-column h-screen bg-gray-100">
+  <div class="content flex flex-wrap justify-content-around p-4">
+    <div class="company-list flex flex-wrap gap-4">
+      @for(company of companies; track company.companyId){ @if
+      (company.traineecourses.length ) {
+
+      <div
+        class="w-20rem h-28rem surface-500 bg-white border-round-lg overflow-scroll company-card flex flex-column shadow-2 border rounded-lg w-full md:w-1/2 lg:w-1/3 p-4"
+      >
+        <img
+          [src]="company.companyLogo"
+          alt=""
+          class="w-12 h-12 self-center mb-2 rounded-full"
+        />
+        <h2 class="text-center">{{ company.companyName }}</h2>
+        <h5>{{ company.aboutCompany }}</h5>
+        <p class="w-10rem text-overflow-ellipsis">{{ company.description }}</p>
+       
+        ( trainee of company.traineecourses; track trainee.traineeCourseId){
+          @if (company.traineecourses.length > 1) {
+        <hr class="m-2" />
+        }
+        <div class="flex flex-column w-12 flex-wrap">
+          <h3 class="text-center">{{ trainee.traineeTitle }}</h3>
+          <h4 class="text-left">{{ trainee.traineeDescription }}</h4>
+          <p class="bold">Start date - {{ trainee.startDate }}</p>
+          <p>End date - {{ trainee.endDate }}</p>
+          <p class="">
+            Expectations from student: {{ trainee.expectationsFromStudents }}
+          </p>
+          <p>GPA: {{ trainee.gparequirement }}</p>
+          <p>Max users: {{ trainee.maxUsers }}</p>
+
+          <div
+            class="w-12 h-2rem flex align-items-center justify-content-center"
+          >
+            <p-toast position="center" class="ui-toast-message" />
+            <button
+              class="w-6 h-full"
+              pButton
+              (click)="createApplication(trainee.traineeCourseId)"
+              label="Apply"
+            ></button>
+            <!-- [disabled]="disabledButtons[trainee.traineeCourseId]" -->
+          </div>
+        </div>
+        }
+      </div>
+      } }
+    </div>
+  </div>
+</div>
